@@ -36,20 +36,20 @@ public class MainActivityTest {
         Log.i("Test", getClass().getName().toLowerCase());
     }
 
+    //Visible Test
     @Test
     public void onHelloTestVisible() throws Exception{
-        Thread.sleep(2000);
-
-        Intents.init();
         onView(withText("Hello World!")).check(matches(isDisplayed()));
+    }
+
+    //Start Activity Test
+    @Test
+    public void onStartActivity() throws Exception{
+        Intents.init();
         onView(withId(R.id.btn)).perform(click());
-        //onView(withText("Hello World!")).check(matches(not(isDisplayed())));
         intended(hasComponent(NewActivity.class.getName()));
-        Intents.release();
         onView(withText("New Activity")).check(matches(isDisplayed()));
-
-        Thread.sleep(5000);
-
+        Intents.release();
     }
 
 }

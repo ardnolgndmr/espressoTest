@@ -9,6 +9,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASEURL", "\"https://api.github.com/\""
+
     }
     buildTypes {
         release {
@@ -16,8 +18,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
+ext{
+    daggerVersion = '2.9'
+    retrofitVersion = '2.2.0'
+    butterknifeVersion = '8.5.1'
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -29,4 +40,42 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+
+
+    compile 'com.android.support:multidex:1.0.1'
+
+
+    //Timber (Log)
+    compile 'com.jakewharton.timber:timber:4.3.1'
+
+    //Eventbus
+    compile 'org.greenrobot:eventbus:3.1.1'
+
+
+    //rest interactions
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    //JSON Parsing
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile 'com.google.code.gson:gson:2.7'
+
+    //http logging
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+
+
+    //injection
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    //RxJava
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'io.reactivex:rxjava:1.2.7'
+    compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.activity.MainActivity"/>
+        <activity android:name=".controller.activity.TakeAPhotoActivity"/>
 
         <activity android:name=".NewActivity"/>
         <activity android:name=".ShowTextActivity"/>
